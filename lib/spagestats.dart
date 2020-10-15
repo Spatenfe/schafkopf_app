@@ -1,19 +1,23 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SPageStats extends StatelessWidget{
+class SPageStats extends StatelessWidget {
   int playercount = 4;
+  final List<String> playerBar = ["Test1","Test2"];
   @override
-  SPageStats(){}
+  SPageStats() {}
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        	for(int i = 0; i < playercount; i++){
-            Icon: Icons.access_alarm_outlined,
-          }
-      ],
+    return Scaffold(
+      body: ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: this.playerBar.length, 
+        itemBuilder: (BuildContext context, index){
+          return new Text	(
+            playerBar[index],
+            style: TextStyle(fontSize: 30),
+          );
+        }
+        ),
     );
   }
-  
 }
