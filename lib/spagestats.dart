@@ -1,15 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schafkopf_app/saddplayerbutton.dart';
+import 'package:schafkopf_app/splayerbar.dart';
 
 class SPageStats extends StatelessWidget {
   int playercount = 4;
-  var list = ["Test1", "Test2", "Test3"];
+  List<String> playername;
+  static List<SPlayerBar> playerlist = new List<SPlayerBar>();
   @override
-  SPageStats() {}
+  SPageStats() {
+    /*list.add(new SPlayerBar("Felix"));
+    list.add(SPlayerBar("Lars"));*/
+  }
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        for (var item in list) Text(item),
+    return Column( 
+      children: <SPlayerBar>[
+        for (var item in playerlist) item,
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schafkopf_app/saddplayerbutton.dart';
 import 'package:schafkopf_app/spagestats.dart';
 
 class STabBar extends StatelessWidget {
@@ -8,6 +9,7 @@ class STabBar extends StatelessWidget {
   double iconSize;
   Color tabColor;
   Color iconColor;
+  SPageStats lsit = SPageStats();
   TextStyle headline1;
   List<Tab> tabs_header = <Tab>[];
   STabBar(Color color, double iSize, Color iColor, TextStyle hline1) {
@@ -52,8 +54,12 @@ class STabBar extends StatelessWidget {
   }
   List<Tab> tabs_content = <Tab>[
     Tab(
-      text: "first tab",
-      child: SPageStats(),
+      child: Column(
+        children: [
+          SPageStats(),
+          SAddPlayerButton(),
+        ],
+        )    
     ),
     Tab(
       text: "second tab",
@@ -85,10 +91,7 @@ class STabBar extends StatelessWidget {
           body: TabBarView(
             children: tabs_content.map((Tab tab) {
               return Center(
-                child: Text(
-                  tab.text + ' Tab',
-                  style: Theme.of(context).textTheme.headline1,
-                ),
+                  child: tab.child,
               );
             }).toList(),
           ),
