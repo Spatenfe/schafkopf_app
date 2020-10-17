@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:schafkopf_app/saddplayerbutton.dart';
 import 'package:schafkopf_app/splayerbar.dart';
 
-class STabBar extends StatefulWidget {
+class STabBar extends StatelessWidget {
   @override
   List<String> playername;
   static List<SPlayerBar> playerlist = new List<SPlayerBar>();
