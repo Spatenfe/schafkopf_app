@@ -8,6 +8,7 @@ void main() {
 }
 
 class SchafkopfCal extends StatelessWidget {
+  final GlobalKey <STabBarState> key = GlobalKey<STabBarState>();
   double iconSize = 25;
   Color iconColor = Colors.white;
   @override
@@ -43,7 +44,6 @@ class SchafkopfCal extends StatelessWidget {
           ),
         ));
   }
-
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState

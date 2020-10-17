@@ -1,16 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schafkopf_app/finised/shadow.dart';
+import 'package:schafkopf_app/main.dart';
 import 'package:schafkopf_app/splayerbar.dart';
 import 'package:schafkopf_app/stabbar.dart';
 
 class SAddPlayerButton extends StatelessWidget {
   Color playerbar = Color(0xFF29313A);
+  STabBarState temp;
+  SAddPlayerButton(STabBarState temp){
+    this.temp = temp;
+  }
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        action();
+        this.temp.addPlayerBar(SPlayerBar("pname"));
       },
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
@@ -31,8 +36,4 @@ class SAddPlayerButton extends StatelessWidget {
     );
   }
 
-  action() {
-    print("add");
-    STabBar.playerlist.add(SPlayerBar("Player1"));
-  }
 }

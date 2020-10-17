@@ -3,23 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:schafkopf_app/saddplayerbutton.dart';
 import 'package:schafkopf_app/splayerbar.dart';
 
-class STabBar extends StatelessWidget {
-  @override
-  List<String> playername;
+class STabBar extends StatefulWidget {
   static List<SPlayerBar> playerlist = new List<SPlayerBar>();
   double iconSize;
   Color tabColor;
   Color iconColor;
   List<Tab> tabs_header = <Tab>[];
-  //SPageStats lsit = SPageStats();
   TextStyle headline1;
   STabBar(Color color, double iSize, Color iColor, TextStyle hline1) {
     tabColor = color;
     iconSize = iSize;
-    print("ALARM: " + iSize.toString());
     iconColor = iColor;
     headline1 = headline1;
+  }
+  @override
+  STabBarState createState() => STabBarState(tabColor, iconSize, iconColor, headline1, playerlist);
+}
 
+class STabBarState extends State<STabBar> {
+  List<SPlayerBar> playerlist = new List<SPlayerBar>();
+  double iconSize;
+  Color tabColor;
+  Color iconColor;
+  List<Tab> tabs_header = <Tab>[];
+  TextStyle headline1;
+  STabBarState(Color color, double iSize, Color iColor, TextStyle hline1, List<SPlayerBar> playerlist) {
+    tabColor = color;
+    iconSize = iSize;
+    iconColor = iColor;
+    headline1 = headline1;
+    this.playerlist = playerlist;
     tabs_header =[
       Tab(
         child: Column(
@@ -53,12 +66,22 @@ class STabBar extends StatelessWidget {
       ),
     ];
   }
-  List<Tab> tabs_content = <Tab>[
+  addPlayerBar(SPlayerBar newBar){
+    setState(() {
+      playerlist.add(newBar);
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    int test = playerlist.length;
+    print("ALARM0123");
+    print(playerlist.length.toString());
+    List<Tab> tabs_content = <Tab>[
     Tab(
       child: Column(
         children: [
           for (var item in playerlist) item,
-          new SAddPlayerButton(),
+          new SAddPlayerButton(this),
         ],
         )    
     ),
@@ -66,8 +89,6 @@ class STabBar extends StatelessWidget {
       text: "second tab",
     ),
   ];
-
-  Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       // The Builder widget is used to have a different BuildContext to access
@@ -100,10 +121,5 @@ class STabBar extends StatelessWidget {
       }),
     );
   }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
 }
+
