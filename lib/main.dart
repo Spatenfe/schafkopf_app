@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schafkopf_app/sbutton.dart';
+import 'package:schafkopf_app/finised/sbutton.dart';
 import 'package:schafkopf_app/stabbar.dart';
 
 void main() {

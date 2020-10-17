@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schafkopf_app/shadow.dart';
-import 'package:schafkopf_app/spagestats.dart';
+import 'package:schafkopf_app/finised/shadow.dart';
 import 'package:schafkopf_app/splayerbar.dart';
+import 'package:schafkopf_app/stabbar.dart';
 
 class SAddPlayerButton extends StatelessWidget {
   Color playerbar = Color(0xFF29313A);
@@ -33,6 +33,6 @@ class SAddPlayerButton extends StatelessWidget {
 
   action() {
     print("add");
-    SPageStats.playerlist.add(SPlayerBar("Player1"));
+    STabBar.playerlist.add(SPlayerBar("Player1"));
   }
 }

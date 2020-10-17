@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schafkopf_app/saddplayerbutton.dart';
-import 'package:schafkopf_app/spagestats.dart';
+import 'package:schafkopf_app/splayerbar.dart';
 
-class STabBar extends StatelessWidget {
+class STabBar extends StatefulWidget {
   @override
-  // ignore: override_on_non_overriding_member
+  List<String> playername;
+  static List<SPlayerBar> playerlist = new List<SPlayerBar>();
   double iconSize;
   Color tabColor;
   Color iconColor;
-  SPageStats lsit = SPageStats();
-  TextStyle headline1;
   List<Tab> tabs_header = <Tab>[];
+  //SPageStats lsit = SPageStats();
+  TextStyle headline1;
   STabBar(Color color, double iSize, Color iColor, TextStyle hline1) {
     tabColor = color;
     iconSize = iSize;
@@ -19,7 +20,7 @@ class STabBar extends StatelessWidget {
     iconColor = iColor;
     headline1 = headline1;
 
-    tabs_header = [
+    tabs_header =[
       Tab(
         child: Column(
           children: [
@@ -56,8 +57,8 @@ class STabBar extends StatelessWidget {
     Tab(
       child: Column(
         children: [
-          SPageStats(),
-          SAddPlayerButton(),
+          for (var item in playerlist) item,
+          new SAddPlayerButton(),
         ],
         )    
     ),
@@ -98,5 +99,11 @@ class STabBar extends StatelessWidget {
         );
       }),
     );
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }

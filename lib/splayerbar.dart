@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schafkopf_app/shadow.dart';
+import 'package:schafkopf_app/finised/shadow.dart';
 
 class SPlayerBar extends StatelessWidget {
   String playername;
